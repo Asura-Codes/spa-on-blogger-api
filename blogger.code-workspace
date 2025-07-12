@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "./blogger-gui",
+			"name": "Gui"
+		},
+		{
+			"path": "./blogger-cli",
+			"name": "Cli"
+		},
+		{
+			"path": "./vue-blogger-spa",
+			"name": "Site"
+		}
+	],
+	"settings": {
+		"powershell.cwd": "Cli"
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+
+
+		]
+	}
+}

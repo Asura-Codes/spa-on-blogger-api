@@ -6,7 +6,13 @@ An experimental Single Page Application (SPA) built with Vue.js to replace and m
 
 This is an experimental project designed to enhance my wife's blog UI by replacing the default Blogger interface with a modern Vue.js application. The goal is to create a more engaging and responsive reading experience while preserving all existing blog functionality.
 
-## 📋 Architecture
+## � Project Components
+
+- [Vue Blogger SPA](https://github.com/Asura-Codes/spa-on-blogger-api/tree/main/vue-blogger-spa) - Frontend SPA built with Vue.js
+- [Blogger GUI](https://github.com/Asura-Codes/spa-on-blogger-api/tree/main/blogger-gui) - Desktop GUI application for managing Blogger content
+- [Blogger CLI](https://github.com/Asura-Codes/spa-on-blogger-api/tree/main/blogger-cli) - Command-line interface for Blogger operations
+
+## �📋 Architecture
 
 - **Frontend**: Vue.js SPA with static files on GitHub
 - **CDN**: jsDelivr for serving JavaScript files

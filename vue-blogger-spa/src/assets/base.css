@@ -1,0 +1,10 @@
+/* Base CSS - minimal reset only */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Let App.vue handle the global styles with CSS variables */

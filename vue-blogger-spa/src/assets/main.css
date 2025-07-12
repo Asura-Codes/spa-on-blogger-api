@@ -1,0 +1,7 @@
+@import './base.css';
+
+/* Remove conflicting styles and let App.vue handle the layout */
+/* Let component-specific styles handle links */
+.green {
+  color: hsla(160, 100%, 37%, 1);
+}

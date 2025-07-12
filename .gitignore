@@ -1,0 +1,38 @@
+# Ignore token and authentication files
+token.pickle
+credentials.json
+
+# Ignore backup files
+*.bak
+*.backup
+*-backup.*
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore local environment files
+.env
+.env.local
+
+# Ignore cache directories
+__pycache__/
+.cache/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore backup XML/JSON files
+*-backup.xml
+*-backup.json
+
+*.xml
+*.json

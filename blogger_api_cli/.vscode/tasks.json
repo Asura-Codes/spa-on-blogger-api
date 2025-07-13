@@ -2,9 +2,9 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "tasks": [
+    "tasks": [ 
         {
-            "label": "Run Blogger Cli module",
+            "label": "Blogger API Cli - Run",
             "type": "shell",
             "command": ".venv\\Scripts\\python.exe",
             "args": [
@@ -20,7 +20,7 @@
             "problemMatcher": []
         },
         {
-            "label": "Install Requirements",
+            "label": "Blogger API Cli - Install Requirements",
             "type": "shell",
             "command": ".venv\\Scripts\\python.exe",
             "args": [
@@ -33,7 +33,7 @@
             "problemMatcher": []
         },
         {
-            "label": "Build Blogger Cli with PyInstaller",
+            "label": "Blogger API Cli - PyInstaller",
             "type": "shell",
             "command": ".venv\\Scripts\\python.exe",
             "args": [
@@ -54,20 +54,55 @@
             "problemMatcher": []
         },
         {
-            "label": "Build Blogger Cli with build",
+            "label": "Blogger API Cli - Build for PyPI",
             "type": "shell",
-            "command": ".venv\\Scripts\\python.exe",
+            "command": "pwsh.exe",
             "args": [
-            "-m", "pip", "install", "build", "&&",
-            ".venv\\Scripts\\python.exe",
-            "-m", "build"
+                "-Command", 
+                "if (Test-Path dist) { Remove-Item -Recurse -Force dist }; .venv\\Scripts\\python.exe -m pip install build --upgrade && .venv\\Scripts\\python.exe -m build"
             ],
             "group": "build",
             "presentation": {
-            "echo": true,
-            "reveal": "always",
-            "focus": true,
-            "panel": "shared"
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Blogger API Cli - Publish to TestPyPI",
+            "type": "shell",
+            "command": ".venv\\Scripts\\python.exe",
+            "args": [
+                "-m", "pip", "install", "twine", "--upgrade", "&&",
+                ".venv\\Scripts\\twine",
+                "upload", "--repository", "testpypi", "dist/*"
+            ],
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Blogger API Cli - Publish to PyPI",
+            "type": "shell",
+            "command": ".venv\\Scripts\\python.exe",
+            "args": [
+                "-m", "pip", "install", "twine", "--upgrade", "&&",
+                ".venv\\Scripts\\twine",
+                "upload", "dist/*"
+            ],
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
             },
             "problemMatcher": []
         }

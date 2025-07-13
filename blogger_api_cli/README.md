@@ -9,15 +9,8 @@ A command-line interface for interacting with the Blogger API. This tool allows 
 
 ## Getting Started
 
-### 1. Install Requirements
-Run the following command in this directory to install dependencies:
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-### 2. Create `config.json`
-The CLI requires a `config.json` file for authentication and configuration. This file is **not included** in the repository (see `.gitignore`). Create it in the root of the `blogger_api_cli` directory with the following structure:
+### 1. Create `config.json`
+The CLI requires a `config.json` file for authentication and configuration. Create it according to the following structure:
 
 ```json
 {
@@ -40,7 +33,7 @@ The CLI requires a `config.json` file for authentication and configuration. This
 - `user_id`: (optional) Use `self` for accessing your own blog
 - `blog_url`: (optional) The public URL of your blog
 
-### 3. How to Get a Google API Key
+### 2. How to Get a Google API Key
 To use the Blogger CLI, you need a Google API key with access to the Blogger API. Follow these steps:
 
 1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
@@ -56,7 +49,7 @@ You may restrict the API key to specific referrers or IP addresses for security,
 
 > **Note:** The API key provided in this project is approved for **read-only** access. You can only fetch data, not modify it. For write access, you must request additional permissions from Google.
 
-### 4. Usage
+### 3. Usage
 Run the CLI using:
 
 ```powershell

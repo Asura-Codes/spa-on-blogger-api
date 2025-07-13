@@ -4,9 +4,9 @@ This module provides functions to test the Blogger API by making GET requests to
 """
 
 from typing import Optional
-from blogger_cli.api import get_request
-from blogger_cli.config import BloggerConfig
-from blogger_cli.test_config import TestConfig
+from blogger_api_cli.api import get_request
+from blogger_api_cli.config import BloggerConfig
+from blogger_api_cli.test_config import TestConfig
 
 
 def blogger_test(config: Optional[BloggerConfig] = None, test_config: Optional[TestConfig] = None) -> bool:

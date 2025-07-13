@@ -1,6 +1,6 @@
-from blogger_cli.api import blogger_api_request
-from blogger_cli.config import BloggerConfig
-from blogger_cli.test_config import TestConfig
+from blogger_api_cli.api import blogger_api_request
+from blogger_api_cli.config import BloggerConfig
+from blogger_api_cli.test_config import TestConfig
 
 
 def permission_test(config=None, test_config=None):

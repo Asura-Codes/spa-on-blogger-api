@@ -1,14 +1,14 @@
-# filepath: blogger-cli/pyproject.toml
+# filepath: blogger_api_cli/pyproject.toml
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "blogger-cli"
+name = "blogger_api_cli"
 version = "0.1.0"
 description = "A CLI tool for interacting with the Blogger API"
 authors = [{ name="Asura Codes", email="tomaszewski-patryk@o2.pl" }]
-license = { file = "LICENSE" }
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
@@ -22,7 +22,6 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -31,8 +30,8 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/your-username/blogger-cli"
-"Bug Tracker" = "https://github.com/your-username/blogger-cli/issues"
+"Homepage" = "https://github.com/Asura-Codes/spa-on-blogger-api/tree/main/blogger_api_cli"
+"Bug Tracker" = "https://github.com/Asura-Codes/spa-on-blogger-api/issues"
 
 [project.scripts]
-blogger-cli = "blogger_cli.main:main"
+blogger_api_cli = "blogger_api_cli:main"

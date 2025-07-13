@@ -57,10 +57,10 @@ Once published, users can install your package using pip:
 
 ```
 # From TestPyPI
-pip install --index-url https://test.pypi.org/simple/ blogger-cli
+pip install --index-url https://test.pypi.org/simple/ blogger_api_cli
 
 # From PyPI
-pip install blogger-cli
+pip install blogger_api_cli
 ```
 
 ## Additional Resources

@@ -7,8 +7,8 @@ search for posts within a blog, and retrieve blog information by ID or URL.
 import json
 import os
 from typing import Optional, Dict, Any, Union
-from blogger_cli.api import get_request
-from blogger_cli.config import BloggerConfig
+from blogger_api_cli.api import get_request
+from blogger_api_cli.config import BloggerConfig
 
 
 def export_posts(config: BloggerConfig, output_path: Optional[str] = None) -> bool:

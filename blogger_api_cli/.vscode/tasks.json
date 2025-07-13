@@ -1,0 +1,75 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Blogger Cli module",
+            "type": "shell",
+            "command": ".venv\\Scripts\\python.exe",
+            "args": [
+                "-m", "blogger_api_cli"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Install Requirements",
+            "type": "shell",
+            "command": ".venv\\Scripts\\python.exe",
+            "args": [
+                "-m", "pip", "install", "-r", "requirements.txt"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Blogger Cli with PyInstaller",
+            "type": "shell",
+            "command": ".venv\\Scripts\\python.exe",
+            "args": [
+            "-m", "pip", "install", "pyinstaller", "&&",
+            ".venv\\Scripts\\pyinstaller",
+            "--noconfirm",
+            "--name", "blogger_api_cli",
+            "--add-data", "blogger_api_cli:blogger_api_cli",
+            "blogger_api_cli/main.py"
+            ],
+            "group": "build",
+            "presentation": {
+            "echo": true,
+            "reveal": "always",
+            "focus": true,
+            "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Blogger Cli with build",
+            "type": "shell",
+            "command": ".venv\\Scripts\\python.exe",
+            "args": [
+            "-m", "pip", "install", "build", "&&",
+            ".venv\\Scripts\\python.exe",
+            "-m", "build"
+            ],
+            "group": "build",
+            "presentation": {
+            "echo": true,
+            "reveal": "always",
+            "focus": true,
+            "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

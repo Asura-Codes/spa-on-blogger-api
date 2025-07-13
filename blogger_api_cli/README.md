@@ -17,7 +17,7 @@ python -m pip install -r requirements.txt
 ```
 
 ### 2. Create `config.json`
-The CLI requires a `config.json` file for authentication and configuration. This file is **not included** in the repository (see `.gitignore`). Create it in the root of the `blogger-cli` directory with the following structure:
+The CLI requires a `config.json` file for authentication and configuration. This file is **not included** in the repository (see `.gitignore`). Create it in the root of the `blogger_api_cli` directory with the following structure:
 
 ```json
 {
@@ -60,7 +60,7 @@ You may restrict the API key to specific referrers or IP addresses for security,
 Run the CLI using:
 
 ```powershell
-python -m blogger_cli.main [OPTIONS]
+python -m blogger_api_cli [OPTIONS]
 ```
 
 #### Main Options
@@ -96,27 +96,27 @@ python -m blogger_cli.main [OPTIONS]
 
 - Run Blogger API test:
   ```powershell
-  python -m blogger_cli.main -b
+  python -m blogger_api_cli -b
   ```
 - Run permission test:
   ```powershell
-  python -m blogger_cli.main -p
+  python -m blogger_api_cli -p
   ```
 - Convert XML to JSON:
   ```powershell
-  python -m blogger_cli.main -x -f path/to/blog-export.xml --include-drafts
+  python -m blogger_api_cli -x -f path/to/blog-export.xml --include-drafts
   ```
 - Export posts:
   ```powershell
-  python -m blogger_cli.main --export-posts -o my-posts.json
+  python -m blogger_api_cli --export-posts -o my-posts.json
   ```
 - Search for posts:
   ```powershell
-  python -m blogger_cli.main --search "query" --max-results 20
+  python -m blogger_api_cli --search "query" --max-results 20
   ```
 - Get blog info:
   ```powershell
-  python -m blogger_cli.main --get-blog -o blog-info.json
+  python -m blogger_api_cli --get-blog -o blog-info.json
   ```
 
 Refer to the code or use `--help` for more details on all options.

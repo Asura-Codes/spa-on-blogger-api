@@ -15,7 +15,7 @@
             "name": "Blogger Cli: Module",
             "type": "debugpy",
             "request": "launch",
-            "module": "blogger_cli",
+            "module": "blogger_api_cli",
             "args": ["-h"]
         },
         {

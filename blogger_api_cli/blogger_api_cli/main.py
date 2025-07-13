@@ -2,8 +2,8 @@ import os
 import sys
 import argparse
 
-from blogger_cli.config import BloggerConfig
-from blogger_cli.test_config import TestConfig
+from blogger_api_cli.config import BloggerConfig
+from blogger_api_cli.test_config import TestConfig
 
 
 def is_running_as_executable():
@@ -24,7 +24,7 @@ def parse_arguments():
         argparse.Namespace: The parsed command line arguments.
     """
     # Determine command prefix based on execution environment
-    cmd_prefix = "blogger_cli.exe" if is_running_as_executable() else "python -m blogger_cli"
+    cmd_prefix = "blogger_api_cli.exe" if is_running_as_executable() else "python -m blogger_api_cli"
     
     # Create the epilog text with the appropriate command prefix
     epilog_text = f"""
@@ -107,12 +107,12 @@ def main():
     
     # Execute the appropriate function based on the command
     if args.blogger:
-        from blogger_cli.blogger_test import blogger_test
+        from blogger_api_cli.blogger_test import blogger_test
         print("Running Blogger API test...")
         blogger_test(config, test_config)
         
     elif args.permission:
-        from blogger_cli.permission_test import permission_test
+        from blogger_api_cli.permission_test import permission_test
         print("Running Blogger API permission test...")
         permission_test(config, test_config)
         
@@ -122,7 +122,7 @@ def main():
             print("Use -f or --xml-file to specify the path to the XML blog backup file.")
             sys.exit(1)
             
-        from blogger_cli.xml_to_json import xml_entries_to_json
+        from blogger_api_cli.xml_to_json import xml_entries_to_json
         xml_path = args.xml_file
         posts_json = args.posts_json if args.posts_json else default_posts_json
         pages_json = args.pages_json if args.pages_json else default_pages_json
@@ -132,22 +132,22 @@ def main():
         xml_entries_to_json(xml_path, posts_json, pages_json, include_drafts=args.include_drafts)
     
     elif args.export_posts:
-        from blogger_cli.export_search import export_posts
+        from blogger_api_cli.export_search import export_posts
         print("Exporting posts via Blogger API...")
         export_posts(config, output_path=args.output)
     
     elif args.export_pages:
-        from blogger_cli.export_search import export_pages
+        from blogger_api_cli.export_search import export_pages
         print("Exporting pages via Blogger API...")
         export_pages(config, output_path=args.output)
     
     elif args.search:
-        from blogger_cli.export_search import search_posts
+        from blogger_api_cli.export_search import search_posts
         print(f"Searching for posts with query: {args.search}...")
         search_posts(config, args.search, max_results=args.max_results)
     
     elif args.get_blog:
-        from blogger_cli.export_search import get_blog_info
+        from blogger_api_cli.export_search import get_blog_info
         print("Retrieving blog information...")
         get_blog_info(config, output_path=args.output)
 

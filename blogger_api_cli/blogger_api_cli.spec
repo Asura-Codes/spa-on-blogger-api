@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['blogger_cli\\main.py'],
+    ['blogger_api_cli\\main.py'],
     pathex=[],
     binaries=[],
-    datas=[('blogger_cli', 'blogger_cli')],
+    datas=[('blogger_api_cli', 'blogger_api_cli')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -21,7 +21,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='blogger_cli',
+    name='blogger_api_cli',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -40,5 +40,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='blogger_cli',
+    name='blogger_api_cli',
 )

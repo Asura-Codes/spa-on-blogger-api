@@ -10,7 +10,7 @@ This is an experimental project designed to enhance my wife's blog UI by replaci
 
 - [Vue Blogger SPA](https://github.com/Asura-Codes/spa-on-blogger-api/tree/main/vue-blogger-spa) - Frontend SPA built with Vue.js
 - [Blogger GUI](https://github.com/Asura-Codes/spa-on-blogger-api/tree/main/blogger-gui) - Desktop GUI application for managing Blogger content
-- [Blogger CLI](https://github.com/Asura-Codes/spa-on-blogger-api/tree/main/blogger-cli) - Command-line interface for Blogger operations
+- [Blogger CLI](https://github.com/Asura-Codes/spa-on-blogger-api/tree/main/blogger_api_cli) - Command-line interface for Blogger operations
 
 ## �📋 Architecture
 

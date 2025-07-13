@@ -5,7 +5,7 @@
 			"name": "Gui"
 		},
 		{
-			"path": "./blogger-cli",
+			"path": "./blogger_api_cli",
 			"name": "Cli"
 		},
 		{

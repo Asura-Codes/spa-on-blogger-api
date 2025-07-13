@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-dists
-          path: dist/
+          path: blogger_api_cli/dist/
 
   pypi-publish:
     runs-on: ubuntu-latest

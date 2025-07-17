@@ -17,7 +17,7 @@ This is an experimental project designed to enhance my wife's blog UI by replaci
 - **Frontend**: Vue.js SPA with static files on GitHub
 - **CDN**: jsDelivr for serving JavaScript files
 - **Backend**: Blogger platform (unchanged)
-- **Entry Point**: `index.js` file hosted directly on Blogger
+- **Entry Point**: `index.html` file hosted directly on Blogger
 
 ## 🛠️ Tech Stack
 

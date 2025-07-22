@@ -4,7 +4,7 @@ An experimental Single Page Application (SPA) built with Vue.js to replace and m
 
 ## 🚀 Project Overview
 
-This is an experimental project designed to enhance my wife's blog UI by replacing the default Blogger interface with a modern Vue.js application. The goal is to create a more engaging and responsive reading experience while preserving all existing blog functionality.
+This is an experimental project designed to enhance my wife's blog UI by replacing the default Blogger interface with a modern Vue.js application. The goal is to create a blog that is more dynamic and responsive, and tailored to mobile devices, while maintaining all of its existing features.
 
 ## � Project Components
 
@@ -17,7 +17,7 @@ This is an experimental project designed to enhance my wife's blog UI by replaci
 - **Frontend**: Vue.js SPA with static files on GitHub
 - **CDN**: jsDelivr for serving JavaScript files
 - **Backend**: Blogger platform (unchanged)
-- **Entry Point**: `index.js` file hosted directly on Blogger
+- **Entry Point**: `index.html` file hosted directly on Blogger
 
 ## 🛠️ Tech Stack
 

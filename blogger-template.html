@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Blogger SPA</title>
+    <script>
+      // Initialize global object to store Blogger variables
+      window.bloggerData = {
+        blog: {
+          title: '',
+          url: '',
+          homepageUrl: '',
+          pageName: '',
+          pageType: '',
+          locale: '',
+          isMobile: false,
+          // Additional blog properties
+          languageDirection: '',
+          metaDescription: '',
+          blogId: '',
+          version: '',
+          author: {
+            name: '',
+            profileUrl: '',
+            photoUrl: ''
+          }
+        },
+        post: {
+          id: '',
+          title: '',
+          url: '',
+          author: '',
+          timestamp: '',
+          content: '',
+          // Additional post properties
+          labels: [],
+          numComments: 0,
+          allowComments: false,
+          firstImageUrl: '',
+          isFirstPost: false,
+          relatedPosts: []
+        },
+        page: {
+          id: '',
+          title: '',
+          url: ''
+        },
+        // Navigation data
+        navigation: {
+          newerPageUrl: '',
+          olderPageUrl: '',
+          newerPostUrl: '',
+          olderPostUrl: ''
+        },
+        // Archive data
+        archive: {
+          isArchive: false,
+          type: '', // 'date', 'category', etc.
+          title: '',
+          items: []
+        },
+        // Search data
+        search: {
+          isSearch: false,
+          query: '',
+          resultsCount: 0
+        }
+      };
+
+      // Function to capture Blogger variables when running in Blogger environment
+      (function captureBloggerVariables() {
+        // Only execute in Blogger environment
+        if (typeof data !== 'undefined') {
+          try {
+            // Blog data
+            if (data.blog) {
+              window.bloggerData.blog.title = data.blog.title || '';
+              window.bloggerData.blog.url = data.blog.url || '';
+              window.bloggerData.blog.homepageUrl = data.blog.homepageUrl || '';
+              window.bloggerData.blog.pageName = data.blog.pageName || '';
+              window.bloggerData.blog.pageType = data.blog.pageType || '';
+              window.bloggerData.blog.locale = data.blog.locale || '';
+              window.bloggerData.blog.isMobile = data.blog.isMobile || false;
+              window.bloggerData.blog.languageDirection = data.blog.languageDirection || 'ltr';
+              window.bloggerData.blog.metaDescription = data.blog.metaDescription || '';
+              window.bloggerData.blog.blogId = data.blog.blogId || '';
+              window.bloggerData.blog.version = data.blog.version || '';
+              
+              // Author data
+              if (data.blog.author) {
+                window.bloggerData.blog.author.name = data.blog.author.name || '';
+                window.bloggerData.blog.author.profileUrl = data.blog.author.profileUrl || '';
+                window.bloggerData.blog.author.photoUrl = data.blog.author.photoUrl || '';
+              }
+            }
+            
+            // Current post data
+            if (data.posts && data.posts.length > 0) {
+              var post = data.posts[0];
+              window.bloggerData.post.id = post.id || '';
+              window.bloggerData.post.title = post.title || '';
+              window.bloggerData.post.url = post.url || '';
+              window.bloggerData.post.author = post.author || '';
+              window.bloggerData.post.timestamp = post.timestamp || '';
+              window.bloggerData.post.content = post.content || '';
+              window.bloggerData.post.labels = post.labels || [];
+              window.bloggerData.post.numComments = post.numComments || 0;
+              window.bloggerData.post.allowComments = post.allowComments || false;
+              window.bloggerData.post.firstImageUrl = post.firstImageUrl || '';
+              window.bloggerData.post.isFirstPost = post.isFirstPost || false;
+              
+              // Handle featured image if available
+              if (post.featuredImage) {
+                window.bloggerData.post.featuredImage = post.featuredImage;
+              }
+            }
+
+            // Page data (for static pages)
+            if (data.pages && data.pages.length > 0) {
+              var page = data.pages[0];
+              window.bloggerData.page.id = page.id || '';
+              window.bloggerData.page.title = page.title || '';
+              window.bloggerData.page.url = page.url || '';
+            }
+            
+            // Navigation data
+            if (data.olderPageUrl) window.bloggerData.navigation.olderPageUrl = data.olderPageUrl;
+            if (data.newerPageUrl) window.bloggerData.navigation.newerPageUrl = data.newerPageUrl;
+            if (data.olderPostUrl) window.bloggerData.navigation.olderPostUrl = data.olderPostUrl;
+            if (data.newerPostUrl) window.bloggerData.navigation.newerPostUrl = data.newerPostUrl;
+            
+            // Archive data
+            if (data.archive) {
+              window.bloggerData.archive.isArchive = true;
+              window.bloggerData.archive.type = data.archive.type || '';
+              window.bloggerData.archive.title = data.archive.title || '';
+              window.bloggerData.archive.items = data.archive.items || [];
+            }
+            
+            // Search data
+            if (data.search) {
+              window.bloggerData.search.isSearch = true;
+              window.bloggerData.search.query = data.search.query || '';
+              window.bloggerData.search.resultsCount = data.search.resultsCount || 0;
+            }
+
+            console.log('Blogger variables captured successfully');
+          } catch (e) {
+            console.error('Error capturing Blogger variables:', e);
+          }
+        } else {
+          console.log('Not running in Blogger environment');
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="{{JSDELIVR_BASE_URL}}/index.BIiP_e9C.js"></script>
+    <link rel="stylesheet" crossorigin href="{{JSDELIVR_BASE_URL}}/index.B0jH0Ugx.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

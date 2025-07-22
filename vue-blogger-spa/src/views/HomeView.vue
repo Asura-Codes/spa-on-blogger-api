@@ -2,11 +2,26 @@
 import BlogPostCard from '@/components/BlogPostCard.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import PagesWidget from '@/components/PagesWidget.vue';
+import { useBloggerData } from '@/composables/useBloggerData';
 import { useBlogStore } from '@/stores';
 import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 
 const blogStore = useBlogStore();
 const { filteredPosts, isLoading, error } = storeToRefs(blogStore);
+const { bloggerData, isInBloggerEnvironment } = useBloggerData();
+
+const pageTitle = computed(() => {
+  return isInBloggerEnvironment.value && bloggerData.value.blog.title
+    ? `Posts - ${bloggerData.value.blog.title}`
+    : 'Blog Posts';
+});
+
+const subtitle = computed(() => {
+  return isInBloggerEnvironment.value && bloggerData.value.post.title
+    ? `Currently viewing: ${bloggerData.value.post.title}`
+    : 'Explore the latest articles and insights';
+});
 </script>
 
 <template>
@@ -14,8 +29,8 @@ const { filteredPosts, isLoading, error } = storeToRefs(blogStore);
     <div class="content-layout">
       <main class="main-content">
         <header class="page-header">
-          <h1>Blog Posts</h1>
-          <p class="subtitle">Explore the latest articles and insights</p>
+          <h1>{{ pageTitle }}</h1>
+          <p class="subtitle">{{ subtitle }}</p>
         </header>
 
         <TagFilter />
@@ -32,16 +47,10 @@ const { filteredPosts, isLoading, error } = storeToRefs(blogStore);
           </button>
         </div>
 
-        <div v-else class="blog-posts">
-          <p v-if="filteredPosts.length === 0" class="no-posts" role="status">
-            No posts found matching your criteria. Try a different filter.
-          </p>
-
-          <BlogPostCard
-            v-for="post in filteredPosts"
-            :key="post.id"
-            :post="post"
-          />
+        <div v-else>
+          <div v-for="post in filteredPosts" :key="post.id">
+            <BlogPostCard :post="post" />
+          </div>
         </div>
       </main>
 

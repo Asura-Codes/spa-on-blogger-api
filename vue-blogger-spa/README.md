@@ -12,7 +12,7 @@ A Vue.js Single Page Application designed to be embedded in Blogger sites. This 
 - Blog post listing with tag filtering
 - Individual post view
 - Responsive design
-- Single-file embedding for Blogger
+- jsDelivr CDN integration for fast global delivery
 
 ## Project Setup
 
@@ -24,6 +24,7 @@ npm install
 # Create a file named .env.local with the following content:
 # VITE_BLOGGER_API_KEY=your_api_key_here
 # VITE_BLOGGER_BLOG_ID=your_blog_id_here
+# VITE_JSDELIVR_BASE_URL=https://cdn.jsdelivr.net/gh/YOUR_USERNAME/spa-on-blogger-api@latest/vue-blogger-spa/dist-jsdelivr
 
 # Start development server
 npm run dev
@@ -31,8 +32,14 @@ npm run dev
 # Build for production
 npm run build
 
-# Build single-file version for Blogger
-npm run build:blogger
+# Build for jsDelivr hosting
+npm run build:jsdelivr
+
+# Deploy to GitHub Pages
+npm run gh-pages
+
+# Setup jsDelivr configuration interactively
+npm run setup:jsdelivr
 
 # Preview the production build
 npm run preview
@@ -40,14 +47,29 @@ npm run preview
 
 ## Embedding in Blogger
 
-This Vue.js application can be embedded into a Blogger post in two different ways:
+This Vue.js application can be embedded into a Blogger post using jsDelivr:
 
-### Option 1: Single HTML File (May not work with all Blogger templates)
+### jsDelivr CDN Integration (Recommended)
 
-1. Run the Blogger-specific build:
+1. Build the application for jsDelivr:
    ```sh
-   npm run build:blogger
+   npm run build:jsdelivr
    ```
+
+2. Push your code to GitHub
+
+3. Open `dist-jsdelivr/blogger-template.html` and replace the `{{JSDELIVR_BASE_URL}}` placeholder with your actual jsDelivr URL:
+   ```
+   https://cdn.jsdelivr.net/gh/YOUR_USERNAME/REPO@VERSION/vue-blogger-spa/dist-jsdelivr
+   ```
+
+4. Copy the content from the modified `blogger-template.html` and paste it into your Blogger template where you want the app to appear.
+
+Benefits of using jsDelivr:
+- Fast global CDN
+- Automatic versioning
+- No need for custom hosting
+- Free for open source projects
 
 2. This creates a single HTML file (`dist-blogger/index.html`) containing the entire application with all assets inlined
 
@@ -136,3 +158,22 @@ npm run lint
 - **API Rate Limiting**: Be aware of Google API usage limits when fetching data frequently.
 
 If you encounter any issues, please check the browser console for error messages and consider using the fallback sample data until the integration is more stable.
+
+## Deploying to GitHub Pages
+
+To deploy your application to GitHub Pages:
+
+1. Build the application for jsDelivr:
+   ```sh
+   npm run build:jsdelivr
+   ```
+
+2. Deploy to GitHub Pages:
+   ```sh
+   npm run gh-pages
+   ```
+
+3. The application will be deployed to your GitHub Pages site at:
+   `https://YOUR_USERNAME.github.io/spa-on-blogger-api/`
+
+4. This deployed version serves as both a demonstration and as the source for jsDelivr CDN.

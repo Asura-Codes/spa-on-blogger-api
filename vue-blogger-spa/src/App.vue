@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router'
 import LoadingIndicator from './components/LoadingIndicator.vue'
 import { usePageStore } from './stores'
 import { storeToRefs } from 'pinia'
+import { useBloggerData } from './composables/useBloggerData'
 
 const isHeaderScrolled = ref(false)
 const isPageLoading = ref(false)
@@ -15,6 +16,14 @@ const pagesDropdown = ref<HTMLElement | null>(null)
 const isPagesDropdownOpen = ref(false)
 const pageStore = usePageStore()
 const { pages, isLoading: isLoadingPages, error: pagesError } = storeToRefs(pageStore)
+
+// Get Blogger data if available
+const { bloggerData, isInBloggerEnvironment } = useBloggerData()
+const siteTitle = computed(() => {
+  return isInBloggerEnvironment.value && bloggerData.value.blog.title
+    ? bloggerData.value.blog.title
+    : 'Vue Blogger SPA'
+})
 
 const pagesList = computed(() => pages.value)
 
@@ -60,6 +69,11 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
   document.removeEventListener('click', handleClickOutside)
 })
+
+// Function to log blogger data for debugging
+const logBloggerData = () => {
+  console.log('Blogger Data:', JSON.stringify(bloggerData.value, null, 2))
+}
 </script>
 
 <template>
@@ -68,7 +82,7 @@ onUnmounted(() => {
     <a href="#main-content" class="skip-to-content">Skip to content</a>
     <header :class="{ 'scrolled': isHeaderScrolled }">
       <div class="header-content">
-        <h1 class="site-title">Vue Blogger SPA</h1>
+        <h1 class="site-title">{{ siteTitle }}</h1>
         <nav aria-label="Main navigation">
           <RouterLink to="/">Home</RouterLink>
           <RouterLink to="/about">About</RouterLink>
@@ -99,6 +113,11 @@ onUnmounted(() => {
     </header>
 
     <main id="main-content">
+      <div v-if="isInBloggerEnvironment" class="blogger-context-info">
+        <div class="container">
+          <p>Running in Blogger: {{ bloggerData.blog.title }}</p>
+        </div>
+      </div>
       <div class="container">
         <RouterView v-slot="{ Component }">
           <transition name="page" mode="out-in">
@@ -110,7 +129,7 @@ onUnmounted(() => {
 
     <footer>
       <div class="container">
-        <p>&copy; {{ new Date().getFullYear() }} Vue Blogger SPA. Embedded in Blogger.</p>
+        <p>&copy; {{ new Date().getFullYear() }} {{ siteTitle }}. <button @click="logBloggerData" class="debug-button">Embedded in <span class="debug-text">Blogger</span></button></p>
       </div>
     </footer>
   </div>
@@ -505,5 +524,37 @@ footer p {
   z-index: 9999;
   animation: pulse 1.5s infinite;
   transform-origin: left;
+}
+
+/* Blogger context info */
+.blogger-context-info {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 8px 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Debug button style */
+.debug-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-family);
+  transition: color var(--transition-speed) var(--transition-timing);
+  display: inline-flex;
+  align-items: center;
+}
+
+.debug-button:hover {
+  color: var(--primary-color);
+}
+
+.debug-text {
+  text-decoration: underline;
+  text-decoration-style: dotted;
 }
 </style>
